@@ -15,16 +15,22 @@ const Register = () => {
     setPassValidation("");
     if (password.length < 6) {
       setPassValidation("Password must be 6 character");
-    } else if (password.length > 10) {
-      setPassValidation("Password is not exceed over 10 character");
+    } else if (password.length > 15) {
+      setPassValidation("Password is not exceed over 15 character");
+    } else if (!/[A-Z]/.test(password)) {
+      setPassValidation("Password must need atleast one Capital Letter");
+    } else if (!/\d/.test(password)) {
+      setPassValidation("Password must need atleast one number");
+    } else if (!/[@$!%*?&]/.test(password)) {
+      setPassValidation("Password must need atleast one special character");
     } else {
       SignUp(email, password)
         .then((result) => {
           console.log(result.user);
-          toast.success("Register Successful redirecting to home page");
+          toast.success("Register  Successful redirecting to Home page");
           setTimeout(() => {
             window.location.href = "/";
-          }, 4000);
+          }, 2000);
         })
         .catch((err) => {
           setValidation("Email Already in Use");
@@ -106,9 +112,9 @@ const Register = () => {
               <Toaster />
             </div>
           </div>
-          <Toaster position="top-center" reverseOrder={false} />
         </div>
       </div>
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };

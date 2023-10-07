@@ -8,7 +8,7 @@ const Navbar = () => {
   const hanldeSignOut = () => {
     SingOut()
       .then(() => {
-        toast.success("sign out successful");
+        toast.success("Sign out successful");
       })
       .catch((error) => {
         console.log(error);

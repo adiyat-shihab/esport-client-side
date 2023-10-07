@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 
 const ServiceCard = ({ data }) => {
@@ -5,7 +6,7 @@ const ServiceCard = ({ data }) => {
   console.log(id);
   return (
     <div>
-      <div className=" bg-[#221C3E] w-[34.0625rem]   shadow ">
+      <div className=" bg-[#221C3E] w-[30.0625rem]   shadow ">
         <div className="bg-[#3b326484] ">
           <img src={image} alt="" className="h-[14.9375rem] w-[34.0625rem]" />
         </div>
@@ -19,11 +20,10 @@ const ServiceCard = ({ data }) => {
           <p className=" text-white text-xl font-semibold my-4">
             Entry Fee : ${price}
           </p>
-          <Link
-            to={`/service/details/${id}`}
-            className="w-[6.5rem] rounded-md font-medium h-[3rem] bg-[#331e87] text-white"
-          >
-            Details
+          <Link to={`/service/details/${id}`}>
+            <button className="w-[6.5rem] rounded-md font-medium h-[3rem] bg-[#331e87] text-white">
+              Details
+            </button>
           </Link>
         </div>
       </div>

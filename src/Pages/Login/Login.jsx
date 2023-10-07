@@ -39,7 +39,7 @@ const Login = () => {
         <div className="container max-w-sm ml-auto flex-1 flex flex-col mr-[23rem]  items-center justify-center px-2">
           <form
             onSubmit={handleSignIn}
-            className="bg-[#FDF701] border border-black px-6 py-8  shadow-md text-black w-full"
+            className="bg-[#FDF701]  border border-black px-6 py-8  shadow-md text-black w-full"
           >
             <h1 className="mb-8 text-3xl text-center">Login</h1>
 

@@ -12,14 +12,18 @@ import { Toaster } from "react-hot-toast";
 export const authContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   const SignUp = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const SignIn = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
   const SingOut = () => {
-    signOut(auth);
+    return signOut(auth);
   };
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -27,6 +31,7 @@ const AuthProvider = ({ children }) => {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
         setUser(user);
+        setLoading(false);
         // ...
       } else {
         setUser(null);
@@ -38,6 +43,7 @@ const AuthProvider = ({ children }) => {
     user,
     SignIn,
     SingOut,
+    loading,
   };
   return <authContext.Provider value={info}>{children} </authContext.Provider>;
 };
