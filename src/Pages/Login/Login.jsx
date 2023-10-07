@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { authContext } from "../../AuthProvider/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
   const { SignIn } = useContext(authContext);
@@ -16,7 +17,7 @@ const Login = () => {
         toast.success("Register Successful redirecting to home page");
         setTimeout(() => {
           window.location.href = "/";
-        }, 4000);
+        }, 2000);
       })
       .catch((error) => {
         if (error.code === "auth/invalid-login-credentials") {
@@ -93,6 +94,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };

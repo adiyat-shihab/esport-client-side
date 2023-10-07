@@ -1,9 +1,19 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { authContext } from "../../AuthProvider/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 const Navbar = () => {
-  const { user } = useContext(authContext);
+  const { user, SingOut } = useContext(authContext);
+  const hanldeSignOut = () => {
+    SingOut()
+      .then(() => {
+        toast.success("sign out successful");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="sticky top-0">
       <nav className="bg-[#221C3E]">
@@ -14,9 +24,6 @@ const Navbar = () => {
               className="h-8 mr-3"
               alt=""
             />
-            <p className="text-white text-2xl font-semibold font-[Oswald] ">
-              esport
-            </p>
           </Link>
           <button
             data-collapse-toggle="navbar-default"
@@ -38,21 +45,25 @@ const Navbar = () => {
           </button>
           <div className="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul className="font-medium flex flex-col p-4 md:p-0 mt-4  md:flex-row md:space-x-8  ">
-              <li className="text-white cursor-pointer">Home</li>
+              <NavLink to={"/"} className={"text-white"}>
+                Home{" "}
+              </NavLink>
               <li className="text-white cursor-pointer">Sevice</li>
               <li className="text-white cursor-pointer">Blog</li>
               {user ? (
-                <Link to={"/register"} className="text-white cursor-pointer">
+                <button onClick={hanldeSignOut} className="text-white">
                   Sign Out
-                </Link>
+                </button>
               ) : (
                 <Link to={"/register"} className="text-white cursor-pointer">
                   Sign Up
                 </Link>
               )}
             </ul>
+            <Toaster position="top-center" reverseOrder={false} />
           </div>
         </div>
+        <div></div>
       </nav>
     </div>
   );

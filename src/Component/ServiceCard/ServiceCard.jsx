@@ -1,5 +1,8 @@
+import { Link } from "react-router-dom";
+
 const ServiceCard = ({ data }) => {
-  const { name, price, short_description, image } = data;
+  const { name, price, short_description, image, id } = data;
+  console.log(id);
   return (
     <div>
       <div className=" bg-[#221C3E] w-[34.0625rem]   shadow ">
@@ -12,15 +15,16 @@ const ServiceCard = ({ data }) => {
             {name}
           </h5>
 
-          <p className="mb-3 font-normal text-white font-medium">
-            {short_description}
-          </p>
+          <p className="mb-3  text-white font-medium">{short_description}</p>
           <p className=" text-white text-xl font-semibold my-4">
             Entry Fee : ${price}
           </p>
-          <button className="w-[6.5rem] rounded-md font-medium h-[3rem] bg-[#331e87] text-white">
+          <Link
+            to={`/service/details/${id}`}
+            className="w-[6.5rem] rounded-md font-medium h-[3rem] bg-[#331e87] text-white"
+          >
             Details
-          </button>
+          </Link>
         </div>
       </div>
     </div>

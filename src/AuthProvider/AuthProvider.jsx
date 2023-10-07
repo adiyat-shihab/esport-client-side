@@ -2,9 +2,11 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 import auth from "./firebase.config";
 import { createContext, useEffect, useState } from "react";
+import { Toaster } from "react-hot-toast";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const authContext = createContext(null);
@@ -15,6 +17,9 @@ const AuthProvider = ({ children }) => {
   };
   const SignIn = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
+  };
+  const SingOut = () => {
+    signOut(auth);
   };
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -32,6 +37,7 @@ const AuthProvider = ({ children }) => {
     SignUp,
     user,
     SignIn,
+    SingOut,
   };
   return <authContext.Provider value={info}>{children} </authContext.Provider>;
 };
