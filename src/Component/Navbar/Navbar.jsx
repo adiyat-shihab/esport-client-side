@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { authContext } from "../../AuthProvider/AuthProvider";
 
 const Navbar = () => {
+  const { user } = useContext(authContext);
   return (
     <div className="sticky top-0">
       <nav className="bg-[#221C3E]">
@@ -40,9 +41,15 @@ const Navbar = () => {
               <li className="text-white cursor-pointer">Home</li>
               <li className="text-white cursor-pointer">Sevice</li>
               <li className="text-white cursor-pointer">Blog</li>
-              <Link to={"/register"} className="text-white cursor-pointer">
-                Sign Up
-              </Link>
+              {user ? (
+                <Link to={"/register"} className="text-white cursor-pointer">
+                  Sign Out
+                </Link>
+              ) : (
+                <Link to={"/register"} className="text-white cursor-pointer">
+                  Sign Up
+                </Link>
+              )}
             </ul>
           </div>
         </div>
