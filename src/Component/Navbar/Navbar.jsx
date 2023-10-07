@@ -7,8 +7,11 @@ const Navbar = () => {
             <img
               src="https://www.lifewire.com/thmb/fVnnxHsm-TWvbPqlDejXVMZPbL0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/E3Logo_Color_RGB_white_tm-de52c7246bac42b09b26097c22047ddf.png"
               className="h-8 mr-3"
-              alt="Flowbite Logo"
+              alt=""
             />
+            <p className="text-white text-2xl font-semibold font-[Oswald] ">
+              esport
+            </p>
           </a>
           <button
             data-collapse-toggle="navbar-default"

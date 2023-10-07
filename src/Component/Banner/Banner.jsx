@@ -10,7 +10,7 @@ const Banner = () => {
       >
         <div className=" h-[94vh] flex flex-col justify-center items-center gap-10">
           <p className=" text-center font-semibold text-white text-7xl font-[Oswald]  ">
-            Play The Game That You <br /> Never Before
+            Play The Game That You <br /> Play Never Before
           </p>
           <p className="font-semibold text-4xl font-[Oswald] text-white">
             Join Out Tournament. KickStart Your Career
