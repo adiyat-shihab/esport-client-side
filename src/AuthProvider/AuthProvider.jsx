@@ -1,16 +1,39 @@
-import { initializeApp } from "firebase/app";
-const AuthProvider = () => {
-  const firebaseConfig = {
-    apiKey: "AIzaSyCzHfi4MCf2CqBAaM8MCVE7LOOvG3_ZBEE",
-    authDomain: "assignment9-ed2dc.firebaseapp.com",
-    projectId: "assignment9-ed2dc",
-    storageBucket: "assignment9-ed2dc.appspot.com",
-    messagingSenderId: "101265400783",
-    appId: "1:101265400783:web:262b4d9334aba7209ee8ba",
-  };
-  const app = initializeApp(firebaseConfig);
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import auth from "./firebase.config";
+import { createContext, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+// eslint-disable-next-line react-refresh/only-export-components
+export const authContext = createContext(null);
+const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const SignUp = (email, password) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed up
+        const user = userCredential.user;
+        setUser(user);
+        toast.success("account create success");
 
-  return <div></div>;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+  };
+  const info = {
+    SignUp,
+    user,
+  };
+  return (
+    <authContext.Provider value={info}>
+      {children}{" "}
+      <div>
+        <Toaster />
+      </div>
+    </authContext.Provider>
+  );
 };
 
 export default AuthProvider;
