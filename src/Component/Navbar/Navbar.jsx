@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   return (
-    <div>
+    <div className="sticky top-0">
       <nav className="bg-[#221C3E]">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a href="https://flowbite.com/" className="flex items-center">
+          <Link to={"/"} className="flex items-center">
             <img
               src="https://www.lifewire.com/thmb/fVnnxHsm-TWvbPqlDejXVMZPbL0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/E3Logo_Color_RGB_white_tm-de52c7246bac42b09b26097c22047ddf.png"
               className="h-8 mr-3"
@@ -12,7 +14,7 @@ const Navbar = () => {
             <p className="text-white text-2xl font-semibold font-[Oswald] ">
               esport
             </p>
-          </a>
+          </Link>
           <button
             data-collapse-toggle="navbar-default"
             type="button"
@@ -36,7 +38,9 @@ const Navbar = () => {
               <li className="text-white cursor-pointer">Home</li>
               <li className="text-white cursor-pointer">Sevice</li>
               <li className="text-white cursor-pointer">Blog</li>
-              <li className="text-white cursor-pointer">Sign Up</li>
+              <Link to={"/register"} className="text-white cursor-pointer">
+                Sign Up
+              </Link>
             </ul>
           </div>
         </div>
