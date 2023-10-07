@@ -5,12 +5,15 @@ import { useContext, useState } from "react";
 import { authContext } from "../../AuthProvider/AuthProvider";
 const Register = () => {
   const [validation, setValidation] = useState("");
-  const { SignUp } = useContext(authContext);
+  const { SignUp, updateProfiles, user } = useContext(authContext);
+  console.log(user);
   const [passvalidation, setPassValidation] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
+    const name = e.target.fullname.value;
+    const photo = e.target.photo.value;
     setValidation("");
     setPassValidation("");
     if (password.length < 6) {
@@ -28,6 +31,7 @@ const Register = () => {
         .then((result) => {
           console.log(result.user);
           toast.success("Register  Successful redirecting to Home page");
+          updateProfiles(name, photo);
           setTimeout(() => {
             window.location.href = "/";
           }, 2000);
@@ -73,6 +77,12 @@ const Register = () => {
               name="password"
               placeholder="Password"
               required
+            />
+            <input
+              type="text"
+              className="block  bg-[#FDF701] placeholder:text-black border-b-black border-b-2 w-full outline-none p-3  mb-4"
+              name="photo"
+              placeholder="Upload your photo Url"
             />
             <p className="">{validation}</p>
             <p>{passvalidation}</p>
