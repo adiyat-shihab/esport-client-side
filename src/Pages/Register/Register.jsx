@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Register.css";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { useContext } from "react";
 import { authContext } from "../../AuthProvider/AuthProvider";
 const Register = () => {
@@ -9,7 +9,15 @@ const Register = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
+    SignUp(email, password)
+      .then((result) => {
+        console.log(result.user);
+        toast.success("Register Successful");
+        window.location.href = "/";
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
   return (
     <div

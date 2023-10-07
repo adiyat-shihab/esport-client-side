@@ -7,20 +7,7 @@ export const authContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const SignUp = (email, password) => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed up
-        const user = userCredential.user;
-        setUser(user);
-        toast.success("account create success");
-
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
-      });
+    return createUserWithEmailAndPassword(auth, email, password);
   };
   const info = {
     SignUp,
