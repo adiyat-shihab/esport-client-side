@@ -94,21 +94,23 @@ const Navbar = () => {
             )}
           </ul>
         </div>
-        {user ? (
-          <button
-            onClick={hanldeSignOut}
-            className="btn bg-[#221C3E] hidden md:block border-none hover:bg-[#221C3E] text-white"
-          >
-            Sign Out
-          </button>
-        ) : (
-          <Link
-            to={"/register"}
-            className="btn bg-[#221C3E] md:block hidden text-white hover:bg-[#221C3E] border-none"
-          >
-            Sign Up
-          </Link>
-        )}
+        <div className=" hidden md:block">
+          {user ? (
+            <button
+              onClick={hanldeSignOut}
+              className="btn bg-[#221C3E] flex items-center justify-center  border-none hover:bg-[#221C3E] text-white"
+            >
+              Sign Out
+            </button>
+          ) : (
+            <Link
+              to={"/register"}
+              className="btn  bg-[#221C3E] flex justify-center items-center  text-white hover:bg-[#221C3E] border-none"
+            >
+              Sign Up
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );
