@@ -17,12 +17,6 @@ const Banner = () => {
           <p className="font-semibold text-4xl font-[Oswald] text-white">
             Join Out Tournament. KickStart Your Career
           </p>
-          <Link
-            to={"/register"}
-            className="w-[11.5rem] text-center flex items-center justify-center text-xl rounded-sm font-[Oswald] h-[4.5rem] bg-[#6B5FFE] text-white"
-          >
-            Sign Up Now
-          </Link>
         </div>
       </div>
     </>

@@ -5,6 +5,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
   const { SignIn } = useContext(authContext);
+  const [see, setSee] = useState(false);
   const [validation, setValidation] = useState("");
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -51,17 +52,38 @@ const Login = () => {
               required
             />
 
-            <input
-              type="password"
-              className="block  bg-[#FDF701] placeholder:text-black border-b-black border-b-2 w-full outline-none p-3  mb-4"
-              name="password"
-              placeholder="Password"
-              required
-            />
+            <div className="relative">
+              {see ? (
+                <img
+                  className="absolute right-1 "
+                  width="30"
+                  height="30"
+                  src="https://img.icons8.com/ios-glyphs/30/invisible.png"
+                  alt="invisible"
+                  onClick={() => setSee(!see)}
+                />
+              ) : (
+                <img
+                  className="absolute right-1"
+                  width="30"
+                  height="30"
+                  src="https://img.icons8.com/ios-glyphs/30/visible--v1.png"
+                  alt="visible--v1"
+                  onClick={() => setSee(!see)}
+                />
+              )}
+              <input
+                type={see ? "text" : "password"}
+                className="block  bg-[#FDF701] placeholder:text-black border-b-black border-b-2 w-full outline-none p-3  mb-4"
+                name="password"
+                placeholder="password"
+                required
+              />{" "}
+            </div>
             <p>{validation}</p>
 
             <div className="flex justify-center mt-7">
-              <button className="btn w-[9.5rem] h-[1.5rem] hover:bg-[#c9c12c] ">
+              <button className="btn-cyber w-[9.5rem] h-[1.5rem] hover:bg-[#c9c12c] ">
                 <input type="submit" value={"Login_"} />
               </button>
             </div>

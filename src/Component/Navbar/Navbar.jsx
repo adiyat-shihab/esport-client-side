@@ -5,6 +5,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 const Navbar = () => {
   const { user, SingOut } = useContext(authContext);
+  console.log(user);
   const hanldeSignOut = () => {
     SingOut()
       .then(() => {
@@ -15,56 +16,86 @@ const Navbar = () => {
       });
   };
   return (
-    <div className="sticky top-0">
-      <nav className="bg-[#221C3E]">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <Link to={"/"} className="flex items-center">
-            <img
-              src="https://www.lifewire.com/thmb/fVnnxHsm-TWvbPqlDejXVMZPbL0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/E3Logo_Color_RGB_white_tm-de52c7246bac42b09b26097c22047ddf.png"
-              className="h-8 mr-3"
-              alt=""
-            />
-          </Link>
-          <button
-            data-collapse-toggle="navbar-default"
-            type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-default"
-            aria-expanded="false"
-          >
-            <span className="sr-only">Open main menu</span>
+    <div className="navbar bg-[#100A2E]">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
-              className="w-5 h-5"
-              aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
               fill="none"
-              viewBox="0 0 17 14"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              <path stroke="currentColor" d="M1 1h15M1 7h15M1 13h15" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
             </svg>
-          </button>
-          <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4  md:flex-row md:space-x-8  ">
-              <NavLink to={"/"} className={"text-white"}>
-                Home{" "}
-              </NavLink>
-              <li className="text-white cursor-pointer">Sevice</li>
-              <li className="text-white cursor-pointer">Blog</li>
-              {user ? (
-                <button onClick={hanldeSignOut} className="text-white">
-                  Sign Out
-                </button>
-              ) : (
-                <Link to={"/register"} className="text-white cursor-pointer">
-                  Sign Up
-                </Link>
-              )}
-            </ul>
-            <Toaster position="top-center" reverseOrder={false} />
+          </label>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <a>Item 1</a>
+            </li>
+            <li>
+              <a>Parent</a>
+              <ul className="p-2">
+                <li>
+                  <a>Submenu 1</a>
+                </li>
+                <li>
+                  <a>Submenu 2</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a>Item 3</a>
+            </li>
+          </ul>
+        </div>
+        <Link to={"/"} className="flex items-center">
+          <img
+            src="https://www.lifewire.com/thmb/fVnnxHsm-TWvbPqlDejXVMZPbL0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/E3Logo_Color_RGB_white_tm-de52c7246bac42b09b26097c22047ddf.png"
+            className="h-8 mr-3"
+            alt=""
+          />
+        </Link>
+      </div>
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1 text-white">
+          <li>
+            <Link to={"/"}>Home</Link>
+          </li>
+          <li>
+            <Link to={"/blog"}>Blog</Link>
+          </li>
+          <li>
+            <a>Item 3</a>
+          </li>
+        </ul>
+      </div>
+      <div className="navbar-end gap-6 text-white">
+        <p>{user?.displayName}</p>
+        <div className="avatar bg-[#100A2E]">
+          <div className="w-16 rounded-full bg-[#100A2E]">
+            {user?.photoURL ? <img src={user?.photoURL} alt="" /> : ""}
           </div>
         </div>
-        <div></div>
-      </nav>
+        {user ? (
+          <button onClick={hanldeSignOut} className="btn">
+            Sign Out
+          </button>
+        ) : (
+          <Link to={"/register"} className="btn">
+            Sign Up
+          </Link>
+        )}
+      </div>
     </div>
   );
 };

@@ -4,7 +4,7 @@ import ServiceCard from "../ServiceCard/ServiceCard";
 const Service = ({ loader }) => {
   console.log(loader);
   return (
-    <div className="bg-[#100A2E] p-10 px-60 ">
+    <div className="bg-[#100A2E] p-10 px-60 pt-20 ">
       <h1 className="text-white  text-center text-6xl font-[Oswald]">
         Plan Your Epic Match
       </h1>
