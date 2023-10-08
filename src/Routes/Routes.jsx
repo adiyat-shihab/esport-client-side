@@ -5,6 +5,8 @@ import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import ServiceDetails from "../Component/ServiceDetails/ServiceDetails";
 import PrivateRoute from "../Component/PrivateRoute/PrivateRoute";
+import Faq from "../Pages/FAQ/Faq";
+import Blog from "../Pages/Blog/Blog";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,6 +33,22 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: () => fetch("https://api.npoint.io/75f4828fb2b7a4904e89"),
+      },
+      {
+        path: "/faq",
+        element: (
+          <PrivateRoute>
+            <Faq></Faq>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/upcoming/games/tournament",
+        element: (
+          <PrivateRoute>
+            <Blog></Blog>
+          </PrivateRoute>
+        ),
       },
     ],
   },

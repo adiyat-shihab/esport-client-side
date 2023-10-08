@@ -4,9 +4,25 @@ import { authContext } from "../../AuthProvider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
-  const { SignIn } = useContext(authContext);
+  const { SignIn, googleSignIn } = useContext(authContext);
   const [see, setSee] = useState(false);
   const [validation, setValidation] = useState("");
+  const handleGoogleLogin = () => {
+    googleSignIn()
+      .then((result) => {
+        console.log(result.user);
+        toast.success("Register Successful redirecting to home page");
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 2000);
+      })
+      .catch((error) => {
+        if (error.code === "auth/invalid-login-credentials") {
+          setValidation("Email/Password doesn't match");
+          console.log(error);
+        }
+      });
+  };
   const handleSignIn = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -82,7 +98,13 @@ const Login = () => {
             </div>
             <p>{validation}</p>
 
-            <div className="flex justify-center mt-7">
+            <div className="flex justify-center mt-7 gap-6">
+              <button
+                onClick={handleGoogleLogin}
+                className="btn-cyber  w-[9.5rem] h-[1.5rem] "
+              >
+                google login
+              </button>
               <button className="btn-cyber w-[9.5rem] h-[1.5rem] hover:bg-[#c9c12c] ">
                 <input type="submit" value={"Login_"} />
               </button>

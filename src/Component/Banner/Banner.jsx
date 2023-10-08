@@ -13,7 +13,7 @@ const Banner = () => {
             Play The Game That You <br /> Play Never Before
           </p>
           <p className="font-semibold text-4xl font-[Oswald] text-white">
-            Join Out Tournament. KickStart Your Career
+            Join Our Tournament. KickStart Your Career
           </p>
         </div>
       </div>

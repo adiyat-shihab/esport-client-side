@@ -4,6 +4,8 @@ import {
   onAuthStateChanged,
   signOut,
   updateProfile,
+  signInWithPopup,
+  GoogleAuthProvider,
 } from "firebase/auth";
 import auth from "./firebase.config";
 import { createContext, useEffect, useState } from "react";
@@ -11,9 +13,14 @@ import { Toaster } from "react-hot-toast";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const authContext = createContext(null);
+const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const googleSignIn = () => {
+    return signInWithPopup(auth, googleProvider);
+  };
 
   const SignUp = (email, password) => {
     setLoading(true);
@@ -48,6 +55,7 @@ const AuthProvider = ({ children }) => {
     SingOut,
     loading,
     updateProfiles,
+    googleSignIn,
   };
   return <authContext.Provider value={info}>{children} </authContext.Provider>;
 };

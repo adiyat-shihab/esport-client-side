@@ -6,9 +6,15 @@ import { authContext } from "../../AuthProvider/AuthProvider";
 const Register = () => {
   const [validation, setValidation] = useState("");
   const [see, setSee] = useState(false);
-  const { SignUp, updateProfiles, user } = useContext(authContext);
+  const { SignUp, updateProfiles, user, googleSignIn } =
+    useContext(authContext);
   console.log(user);
   const [passvalidation, setPassValidation] = useState("");
+
+  const handleGoogleLogin = () => {
+    googleSignIn().then((result) => console.log(result.user));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -108,7 +114,14 @@ const Register = () => {
             />
             <p className="">{validation}</p>
             <p>{passvalidation}</p>
-            <div className="flex justify-center mt-7">
+            <div className="flex justify-center gap-6 mt-7">
+              <button
+                onClick={handleGoogleLogin}
+                className="btn-cyber  w-[9.5rem] h-[1.5rem] "
+              >
+                google login
+              </button>
+
               <button className="btn-cyber w-[9.5rem] h-[1.5rem] hover:bg-[#c9c12c] ">
                 <input type="submit" value={"Register_"} />
               </button>

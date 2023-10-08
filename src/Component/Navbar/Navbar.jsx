@@ -16,7 +16,7 @@ const Navbar = () => {
       });
   };
   return (
-    <div className="navbar sticky top-0 bg-[#100A2E] px-20">
+    <div className="navbar sticky top-0 py-6 bg-[#100A2E] px-20">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -74,17 +74,17 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to={"/blog"}>Blog</Link>
+            <Link to={"/faq"}>FAQ</Link>
           </li>
           <li>
-            <a>Item 3</a>
+            <Link to={"/upcoming/games/tournament"}>Upcoming Games</Link>
           </li>
         </ul>
       </div>
       <div className="navbar-end gap-6 text-white">
         <p>{user?.displayName}</p>
         <div className="avatar bg-[#100A2E]">
-          <div className="w-16 rounded-full bg-[#100A2E]">
+          <div className="w-12 rounded-full bg-[#100A2E]">
             {user?.photoURL ? <img src={user?.photoURL} alt="" /> : ""}
           </div>
         </div>
