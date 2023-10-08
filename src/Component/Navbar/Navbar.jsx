@@ -16,7 +16,7 @@ const Navbar = () => {
       });
   };
   return (
-    <div className="navbar bg-[#100A2E]">
+    <div className="navbar sticky top-0 bg-[#100A2E] px-20">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -67,9 +67,11 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 text-white">
+        <ul className="flex items-center gap-10 px-1 text-white">
           <li>
-            <Link to={"/"}>Home</Link>
+            <Link to={"/"} className="hover:text-white ">
+              Home
+            </Link>
           </li>
           <li>
             <Link to={"/blog"}>Blog</Link>
@@ -87,11 +89,17 @@ const Navbar = () => {
           </div>
         </div>
         {user ? (
-          <button onClick={hanldeSignOut} className="btn">
+          <button
+            onClick={hanldeSignOut}
+            className="btn bg-[#221C3E] border-none hover:bg-[#221C3E] text-white"
+          >
             Sign Out
           </button>
         ) : (
-          <Link to={"/register"} className="btn">
+          <Link
+            to={"/register"}
+            className="btn bg-[#221C3E] text-white hover:bg-[#221C3E] border-none"
+          >
             Sign Up
           </Link>
         )}

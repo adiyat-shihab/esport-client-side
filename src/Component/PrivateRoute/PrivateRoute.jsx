@@ -8,6 +8,7 @@ const PrivateRoute = ({ children }) => {
   if (loading) {
     return;
   }
+
   if (user) {
     return children;
   }
