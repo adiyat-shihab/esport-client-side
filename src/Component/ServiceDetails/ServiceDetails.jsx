@@ -12,28 +12,32 @@ const ServiceDetails = () => {
   const { name, price, details, image, match_duration, platform } =
     specificData;
   return (
-    <div className="bg-[#120e20] h-screen text-white">
-      <div className="px-[10rem] pt-20 flex justify-evenly ">
-        <div className="space-y-8 w-[41rem]">
-          <p className="font-bold text-3xl font-[Oswald]">Name: {name} </p>
-          <hr />
-          <p className="font-bold text-3xl font-[Oswald]">Fee: $.{price}</p>
-          <hr />
-          <p className="font-bold text-3xl font-[Oswald]">
+    <div className="bg-[#120e20] text-white pb-16">
+      <div className="xl:px-[10rem] pt-20  flex flex-col xl:flex-row justify-evenly ">
+        <div className="space-y-8 pb-6 xl:w-[41rem] xl:text-left text-center">
+          <p className="font-bold text-xl xl:border-b border-white  font-[Oswald]">
+            Name: {name}{" "}
+          </p>
+
+          <p className="font-bold text-xl font-[Oswald] xl:border-b border-white">
+            Fee: $.{price}
+          </p>
+
+          <p className="font-bold text-xl xl:border-b border-white font-[Oswald]">
             Match Duration: {match_duration}
           </p>
-          <hr />
-          <p className="font-bold text-3xl font-[Oswald]">
+
+          <p className="font-bold text-xl xl:border-b border-white font-[Oswald]">
             Platform: {platform}
           </p>
         </div>
         <div>
-          <img src={image} className="h-[22rem] w-[41rem]" alt="" />
+          <img src={image} className="h-[22rem] w-[41rem] mx-auto" alt="" />
         </div>
       </div>
-      <div className="px-[10rem] pt-20 ">
-        <p className="font-bold text-6xl mb-5">About This Game</p>
-        <p className=" text-3xl">{details}</p>
+      <div className="xl:px-[10rem] px-4 pt-20 ">
+        <p className="font-bold text-3xl xl:text-6xl mb-5">About This Game</p>
+        <p className=" lg:text-3xl">{details}</p>
       </div>
     </div>
   );

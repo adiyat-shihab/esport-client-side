@@ -1,7 +1,13 @@
 /* eslint-disable react/prop-types */
 import ServiceCard from "../ServiceCard/ServiceCard";
+import Aos from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const Service = ({ loader }) => {
+  useEffect(() => {
+    Aos.init();
+  }, []);
   console.log(loader);
   return (
     <div className="bg-[#100A2E] p-10 xl:px-48 2xl:px-60 pt-20  ">
