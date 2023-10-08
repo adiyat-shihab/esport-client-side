@@ -1,18 +1,15 @@
 const Footer = () => {
   return (
     <div>
-      <footer className="footer bg-[#221C3E] h-[25vh] p-10 text-white ">
+      <footer className="footer bg-[#221C3E]  p-10 text-white ">
         <aside>
           <img
             src="https://www.lifewire.com/thmb/fVnnxHsm-TWvbPqlDejXVMZPbL0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/E3Logo_Color_RGB_white_tm-de52c7246bac42b09b26097c22047ddf.png"
             alt=""
             className="w-16 h-12"
           />
-          <p>
-            E3 Esport
-            <br />
-            The biggest Gaming Esport Event
-          </p>
+          <p className="text-2xl font-bold">E3 Esport</p>
+          <p className="text-xl">The biggest Gaming Esport Event</p>
         </aside>
         <nav>
           <header className="footer-title">Social</header>

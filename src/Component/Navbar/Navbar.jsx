@@ -16,48 +16,8 @@ const Navbar = () => {
       });
   };
   return (
-    <div className="navbar sticky top-0 py-6 bg-[#100A2E] px-20">
+    <div className="navbar sticky top-0 py-6 z-10 bg-[#100A2E] md:px-4 xl:px-20">
       <div className="navbar-start">
-        <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </label>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
-        </div>
         <Link to={"/"} className="flex items-center">
           <img
             src="https://www.lifewire.com/thmb/fVnnxHsm-TWvbPqlDejXVMZPbL0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/E3Logo_Color_RGB_white_tm-de52c7246bac42b09b26097c22047ddf.png"
@@ -88,17 +48,63 @@ const Navbar = () => {
             {user?.photoURL ? <img src={user?.photoURL} alt="" /> : ""}
           </div>
         </div>
+        <div className="dropdown  dropdown-end">
+          <label tabIndex={0} className="btn btn-ghost lg:hidden m-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </label>
+          <ul
+            tabIndex={0}
+            className="dropdown-content text-white z-[1] bg-[#221C3E] space-y-4 p-4  menu  shadow rounded-box w-52"
+          >
+            <p className="text-base">
+              <Link to={"/"}>Home</Link>
+            </p>
+
+            <p className="text-base">
+              {" "}
+              <Link to={"/faq"}>FAQ</Link>
+            </p>
+
+            <p className="text-base">
+              {" "}
+              <Link to={"/upcoming/games/tournament"}>Upcoming Games</Link>
+            </p>
+            {user ? (
+              <p onClick={hanldeSignOut} className="text-base text-white">
+                Sign Out
+              </p>
+            ) : (
+              <p className="text-base text-white">
+                {" "}
+                <Link to={"/register"}>Sign Up</Link>
+              </p>
+            )}
+          </ul>
+        </div>
         {user ? (
           <button
             onClick={hanldeSignOut}
-            className="btn bg-[#221C3E] border-none hover:bg-[#221C3E] text-white"
+            className="btn bg-[#221C3E] hidden md:block border-none hover:bg-[#221C3E] text-white"
           >
             Sign Out
           </button>
         ) : (
           <Link
             to={"/register"}
-            className="btn bg-[#221C3E] text-white hover:bg-[#221C3E] border-none"
+            className="btn bg-[#221C3E] md:block hidden text-white hover:bg-[#221C3E] border-none"
           >
             Sign Up
           </Link>

@@ -6,7 +6,7 @@ const ServiceCard = ({ data }) => {
   console.log(id);
   return (
     <div>
-      <div className=" bg-[#221C3E] w-[30.0625rem]   shadow ">
+      <div className=" bg-[#221C3E] lg:w-[30.0625rem]   shadow ">
         <div className="bg-[#3b326484] ">
           <img src={image} alt="" className="h-[14.9375rem] w-[34.0625rem]" />
         </div>
