@@ -7,10 +7,12 @@ import ServiceDetails from "../Component/ServiceDetails/ServiceDetails";
 import PrivateRoute from "../Component/PrivateRoute/PrivateRoute";
 import Faq from "../Pages/FAQ/Faq";
 import Blog from "../Pages/Blog/Blog";
+import Error from "../Component/Error/Error";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",

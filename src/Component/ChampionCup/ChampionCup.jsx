@@ -13,7 +13,7 @@ const ChampionCup = () => {
             Get Your Cup Show This To The World
           </p>
           <p className="font-semibold text-5xl font-[Oswald] text-white">
-            Earn Your Biggest Price
+            Earn Your Biggest Reward
           </p>
         </div>
       </div>
